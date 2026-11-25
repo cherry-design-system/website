@@ -13,6 +13,7 @@ For exact props, types, defaults and a checked example of every component, read 
 5. **Customize with a plain class.** cherry is in `@layer cherry`; your unlayered CSS wins without `!important`. Keep focus rings (`outline: 2px solid transparent; box-shadow: var(--cherry-ring)`).
 6. **Icons are `lucide-react` elements** passed to `icon` / `leadingIcon` / `trailingIcon`.
 7. **Distinct names for repeated landmarks** (two `Pagination`s, several `Banner`s), real headings in order, meaning never in color alone.
+8. **Router links go through `asChild`**: `<NavItem asChild><Link href="/docs">Docs</Link></NavItem>` navigates client-side; a plain `href` reloads the page. Pass `active` from the router (`usePathname()`) for a correct first paint, or set `trackRoute` on `NavPill`; `trackSections` highlights `#section` links as their section scrolls into view.
 
 ## Setup (once)
 

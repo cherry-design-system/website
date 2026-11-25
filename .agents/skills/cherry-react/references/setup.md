@@ -62,6 +62,39 @@ init.textContent = themeInitScript;
 document.head.appendChild(init);
 ```
 
+## Navigation with a router (Next.js and others)
+
+`NavItem` renders a plain `<a>`, which reloads the page. For client-side navigation, pass your router's link with `asChild`: NavItem gives it the item's class, state and icon, and your router handles the click.
+
+```tsx
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { NavItem, NavPill } from "@cherry-design-system/react";
+
+export function SiteNav() {
+  const pathname = usePathname();
+  return (
+    <NavPill aria-label="Main" position="fixed" trackSections>
+      <NavItem asChild active={pathname === "/"}>
+        <Link href="/">Home</Link>
+      </NavItem>
+      <NavItem asChild>
+        <Link href="/#components">Components</Link>
+      </NavItem>
+      <NavItem asChild active={pathname.startsWith("/docs")}>
+        <Link href="/docs">Docs</Link>
+      </NavItem>
+    </NavPill>
+  );
+}
+```
+
+- **The current page:** pass `active` from your router (`usePathname()` in Next.js) so the server renders the highlight on the first paint. Or set `trackRoute` on NavPill and leave `active` off: it matches each link against the URL and follows route changes, but only after hydration.
+- **In-page links** (`#section` or `/path#section`): `trackSections` highlights the one whose section is in view, with `aria-current="location"`. Give each target section an `id`.
+- **Position:** `position="sticky"` or `"fixed"`, with `placement` (`top`, `bottom`, `top-start`, `top-end`, `bottom-start`, `bottom-end`). A sticky or fixed pill offsets anchor jumps so headings land below it; set `--cherry-nav-pill-offset` to change its distance from the edge.
+- **Other routers:** the same `asChild` pattern works with React Router's `<Link to>` and TanStack Router's `<Link to>`. The child must render an `<a href>`.
+
 ## Only the CSS you use
 
 Instead of `styles.css`, import `tokens.css`, `css/base.css` and the component files you render:

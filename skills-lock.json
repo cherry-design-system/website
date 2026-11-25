@@ -3,10 +3,10 @@
   "skills": {
     "cherry-react": {
       "source": "cherry-design-system/react",
-      "commit": "ca578b696b150cf3cbf98f1d4d6310b3aa028ec0",
+      "commit": "5744e38839efab9b2a50ba692b553368f613ca8c",
       "sourceType": "github",
       "skillPath": "skills/cherry-react/SKILL.md",
-      "computedHash": "2e67c08f3028e8ed5062b868fe8299631c8795a22470ce39ada2b1ef1109486f"
+      "computedHash": "d5c082b303c075cb924c3f08c419af3259b50fc671d310851297480dbd3eb1ee"
     }
   }
 }

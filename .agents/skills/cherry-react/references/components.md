@@ -774,11 +774,15 @@ Plus all `<element>` attributes.
 
 _Client component (`"use client"`): import it from a Server Component freely; it hydrates on the client._
 
-**NavPill**: Top navigation pill: a `<nav>` holding NavItems. A highlight slides to the item with aria-current="page" whenever it changes (route change, resize). Without JS the current item paints its own static highlight.
+**NavPill**: Top navigation pill: a `<nav>` holding NavItems. A highlight slides to the current item whenever it changes (route change, scroll, resize). Without JS the current item paints its own static highlight.
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
 | `aria-label` | `string` | "Main" | Names the navigation landmark. |
+| `position` | `"static" \| "sticky" \| "fixed"` | `static` | How the pill attaches to the page. `sticky` stays in the flow and sticks to the top or bottom while scrolling; `fixed` floats over the page. |
+| `placement` | `"top" \| "bottom" \| "top-start" \| "top-end" \| "bottom-start" \| "bottom-end"` | `top` | Where a sticky or fixed pill sits. `start`/`end` follow the writing direction (left/right in English). Sticky uses only the top or bottom. |
+| `trackRoute` | `boolean` |  | Marks the link matching the current URL path as the current page, and follows client-side route changes (Next.js and other routers). A link's own `active` prop always wins. The server cannot know the URL, so for a correct first paint pass `active` from your router instead. |
+| `trackSections` | `boolean` |  | Highlights in-page links (`#section`, or `/path#section` on that path) as their section scrolls into view, with aria-current="location". While a section is active it takes the highlight from the current-page link. |
 
 Plus all `<element>` attributes.
 
@@ -788,14 +792,18 @@ Plus all `<element>` attributes.
 | --- | --- | --- | --- |
 | `active` | `boolean` |  | Marks the current page (sets aria-current="page"). |
 | `icon` | `ReactNode` |  | Optional leading icon. |
+| `asChild` | `boolean` |  | Render your own link element (a router link such as Next.js `<Link>`) as the item: pass it as the only child and NavItem gives it the item's class, state and icon. It must render an `<a href>`. |
 
 Plus all `<a>` attributes.
 
-**Accessibility:** A nav landmark (name it with aria-label); the active link is aria-current=page. Dividers are decorative and hide beside the active item.
+Also exported: `useActiveSection` (Tracks which section the visitor is reading, for a table of contents or a navigation that highlights in-page links. Pass the ids of the sections; returns the active id, or null before the first one. Works with any scroll container on the page); `getActiveSection` (Which of the given sections (element ids, in any order) is being read: the last one whose top has passed the reading line, or null above the first. At the very bottom of the page the last section on screen wins, so a short final section can still become active).
+
+**Accessibility:** A nav landmark (name it with aria-label). The current route's link is aria-current=page; with trackSections the in-page link whose section is in view is aria-current=location and takes the highlight. Dividers are decorative and hide beside the highlighted item. A sticky or fixed pill offsets anchor jumps so headings never land under it.
 
 ```tsx
-<NavPill aria-label="Main">
-  <NavItem href="/" active>Home</NavItem>
+<NavPill aria-label="Main" position="fixed" placement="top" trackRoute trackSections>
+  <NavItem href="/">Home</NavItem>
+  <NavItem href="/#components">Components</NavItem>
   <NavItem href="/docs">Docs</NavItem>
 </NavPill>
 ```
@@ -1790,7 +1798,7 @@ Chat composer (Figma "ChatInput", 1.x chat-input): a growing text area, an actio
 | `loading` | `boolean` |  | A reply is on its way: the send button spins and sending is blocked. |
 | `glow` | `boolean` |  | Animated AI gradient border with a soft halo. |
 | `actions` | `ReactNode` |  | Controls at the start of the footer (attach, tools...), e.g. IconButtons. |
-| `footnote` | `ReactNode` |  | Small print under the composer ("AI can make mistakes."). |
+| `footnote` | `ReactNode` |  | Small print under the composer ("Enter to send, Shift+Enter for a new line."). |
 | `maxHeight` | `number` | 160 | Tallest the text area grows before it scrolls, in px. |
 | `sendLabel` | `string` |  |  |
 | `loadingLabel` | `string` |  |  |
@@ -1800,7 +1808,7 @@ Plus all `<textarea>` attributes.
 **Accessibility:** The textarea is labelled ("Message" by default, override with aria-label): Enter sends, Shift+Enter adds a line; the send button is labelled (`sendLabel`).
 
 ```tsx
-<ChatInput onSend={send} loading={pending} footnote="AI can make mistakes." />
+<ChatInput onSend={send} loading={pending} footnote="Enter to send, Shift+Enter for a new line." />
 ```
 
 ### ChatMessage
