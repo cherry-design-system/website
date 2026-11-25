@@ -15,7 +15,7 @@ if (key) {
   try {
     posthog.init(key, {
       api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || "/ingest",
-      ui_host: "https://us.posthog.com",
+      ui_host: "https://eu.posthog.com",
       defaults: "2026-08-30",
       capture_pageview: "history_change",
       capture_pageleave: true,

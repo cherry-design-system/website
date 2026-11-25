@@ -25,18 +25,19 @@ const nextConfig: NextConfig = {
   skipTrailingSlashRedirect: true,
   async rewrites() {
     return [
-      // First-party proxy for PostHog, so ad blockers don't drop analytics.
+      // First-party proxy for PostHog (EU Cloud), so ad blockers don't drop
+      // analytics.
       {
         source: "/ingest/static/:path*",
-        destination: "https://us-assets.i.posthog.com/static/:path*",
+        destination: "https://eu-assets.i.posthog.com/static/:path*",
       },
       {
         source: "/ingest/array/:path*",
-        destination: "https://us-assets.i.posthog.com/array/:path*",
+        destination: "https://eu-assets.i.posthog.com/array/:path*",
       },
       {
         source: "/ingest/:path*",
-        destination: "https://us.i.posthog.com/:path*",
+        destination: "https://eu.i.posthog.com/:path*",
       },
     ];
   },
