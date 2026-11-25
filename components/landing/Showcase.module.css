@@ -204,3 +204,20 @@
 .empty :global(.cherry-empty-state__actions) {
   flex-wrap: nowrap;
 }
+
+/* The delete button keeps a fixed slot the size of its idle state, so the row
+   never reflows. Its confirm step is anchored to the slot's right edge and
+   grows leftward over the row, instead of widening it and wrapping. */
+.trashSlot {
+  position: relative;
+  flex: none;
+  width: 36px;
+  height: 36px;
+}
+
+.trashConfirm {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}

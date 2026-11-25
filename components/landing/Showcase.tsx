@@ -154,12 +154,15 @@ export function Showcase() {
                 <ToggleGroupItem value="week">Week</ToggleGroupItem>
                 <ToggleGroupItem value="month">Month</ToggleGroupItem>
               </ToggleGroup>
-              <ConfirmButton
-                aria-label="Delete draft"
-                onConfirm={() =>
-                  toast.show("Draft deleted", { color: "success" })
-                }
-              />
+              <span className={styles.trashSlot}>
+                <ConfirmButton
+                  aria-label="Delete draft"
+                  wrapperClassName={styles.trashConfirm}
+                  onConfirm={() =>
+                    toast.show("Draft deleted", { color: "success" })
+                  }
+                />
+              </span>
             </div>
           </Card>
 
