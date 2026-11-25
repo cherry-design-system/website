@@ -41,11 +41,11 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  // The old docs site lived at cherry.al and now lives at docs.cherry.al.
-  // Keep every old URL working (and its search ranking) with permanent
-  // redirects. The paths come from the old site's sitemap.
+  // The old docs site lived at cherry.al and now lives at docs.cherry.al, where
+  // the 1.x pages sit under /v1. Keep every old URL working (and its search
+  // ranking) with permanent redirects. The paths come from the old sitemap.
   async redirects() {
-    const docs = "https://docs.cherry.al";
+    const v1 = "https://docs.cherry.al/v1";
     const pages = [
       "accordions",
       "buttons",
@@ -58,19 +58,24 @@ const nextConfig: NextConfig = {
       "site-images",
       "tabs",
       "typography",
-      "preview.png",
-      "icon.png",
     ];
+    // Old social-card assets stayed at the docs root.
+    const assets = ["preview.png", "icon.png"];
     return [
-      { source: "/code", destination: `${docs}/code`, permanent: true },
+      { source: "/code", destination: `${v1}/code`, permanent: true },
       {
         source: "/code/:path*",
-        destination: `${docs}/code/:path*`,
+        destination: `${v1}/code/:path*`,
         permanent: true,
       },
       ...pages.map((page) => ({
         source: `/${page}`,
-        destination: `${docs}/${page}`,
+        destination: `${v1}/${page}`,
+        permanent: true,
+      })),
+      ...assets.map((file) => ({
+        source: `/${file}`,
+        destination: `https://docs.cherry.al/${file}`,
         permanent: true,
       })),
     ];
