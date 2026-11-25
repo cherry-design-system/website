@@ -11,7 +11,7 @@ const groups = [
       { label: "Components", href: "#components" },
       { label: "Theming", href: "#theming" },
       { label: "AI chat kit", href: "#ai-kit" },
-      { label: "Figma kit", href: site.links.docs },
+      { label: "Figma kit", href: site.links.figma },
     ],
   },
   {

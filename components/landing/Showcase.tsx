@@ -472,7 +472,7 @@ export function Showcase() {
         <div className={styles.cta}>
           <ButtonLink
             size="lg"
-            href={site.links.github}
+            href={site.links.playground}
             trailingIcon={<ArrowRight />}
           >
             Open the playground

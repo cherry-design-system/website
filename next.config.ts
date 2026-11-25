@@ -40,6 +40,40 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  // The old docs site lived at cherry.al and now lives at docs.cherry.al.
+  // Keep every old URL working (and its search ranking) with permanent
+  // redirects. The paths come from the old site's sitemap.
+  async redirects() {
+    const docs = "https://docs.cherry.al";
+    const pages = [
+      "accordions",
+      "buttons",
+      "colors",
+      "figma",
+      "icons",
+      "inputs",
+      "overlays",
+      "shadows",
+      "site-images",
+      "tabs",
+      "typography",
+      "preview.png",
+      "icon.png",
+    ];
+    return [
+      { source: "/code", destination: `${docs}/code`, permanent: true },
+      {
+        source: "/code/:path*",
+        destination: `${docs}/code/:path*`,
+        permanent: true,
+      },
+      ...pages.map((page) => ({
+        source: `/${page}`,
+        destination: `${docs}/${page}`,
+        permanent: true,
+      })),
+    ];
+  },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },

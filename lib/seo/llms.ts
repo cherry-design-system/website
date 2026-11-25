@@ -22,6 +22,7 @@ export function llmsIndex() {
     "",
     "## Developer resources",
     "",
+    `- [Playground](${site.links.playground}): every cherry component, live, in light and dark.`,
     `- [Source code](${site.links.github}): components, tokens and the agent skill.`,
     `- [npm package](${site.links.npm}): ${site.packageName}.`,
     `- [Releases](${site.links.releases}): changelog.`,

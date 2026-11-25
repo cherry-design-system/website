@@ -16,7 +16,7 @@ export function organizationSchema() {
     url: site.url,
     logo: absoluteUrl("/icons/android-chrome-512x512.png"),
     description: site.description,
-    sameAs: [site.links.org, site.links.github, site.links.npm],
+    sameAs: [site.links.org, site.links.github, site.links.npm, site.links.figma],
   };
 }
 

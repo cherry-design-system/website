@@ -39,7 +39,11 @@ export const site = {
     githubIssues: "https://github.com/cherry-design-system/react/issues",
     releases: "https://github.com/cherry-design-system/react/releases",
     npm: "https://www.npmjs.com/package/@cherry-design-system/react",
-    docs: "https://github.com/cherry-design-system/react#readme",
+    docs: "https://docs.cherry.al",
+    playground: "https://v2.cherry.al",
+    figma:
+      "https://www.figma.com/community/file/943862931766586094/Cherry-Design-System",
+    discord: "https://discord.gg/6JvcWU5bke",
     org: "https://github.com/cherry-design-system",
     website: "https://github.com/cherry-design-system/website",
   },
