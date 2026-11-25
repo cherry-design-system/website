@@ -32,6 +32,9 @@ export function SiteNav() {
       <NavItem asChild>
         <Link href={site.links.docs}>Docs</Link>
       </NavItem>
+      <NavItem asChild>
+        <Link href={site.links.figma}>Figma</Link>
+      </NavItem>
     </NavPill>
   );
 }

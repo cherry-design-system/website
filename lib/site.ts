@@ -42,7 +42,7 @@ export const site = {
     docs: "https://docs.cherry.al",
     playground: "https://v2.cherry.al",
     figma:
-      "https://www.figma.com/community/file/943862931766586094/Cherry-Design-System",
+      "https://www.figma.com/community/file/943862931766586094/cherry-design-system",
     discord: "https://discord.gg/6JvcWU5bke",
     org: "https://github.com/cherry-design-system",
     website: "https://github.com/cherry-design-system/website",
