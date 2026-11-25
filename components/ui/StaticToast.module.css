@@ -1,0 +1,46 @@
+/* Mirrors the Figma Toast: radius 24 = tile 12 + padding 12, LG elevation. */
+.toast {
+  display: flex;
+  align-items: center;
+  gap: var(--cherry-space-3);
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--cherry-space-3) var(--cherry-space-4) var(--cherry-space-3)
+    var(--cherry-space-3);
+  border: 1px solid var(--cherry-border-default);
+  border-radius: var(--cherry-radius-2xl);
+  background: var(--cherry-bg-elevated);
+  box-shadow: var(--cherry-elevation-lg);
+}
+
+.tile {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--cherry-radius-lg);
+  background: var(--cherry-success-solid);
+  color: var(--cherry-fg-on-accent);
+}
+
+.text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  font-size: var(--cherry-text-body-sm-size);
+  line-height: var(--cherry-text-body-sm-line-height);
+  letter-spacing: var(--cherry-text-body-sm-tracking);
+}
+
+.title {
+  color: var(--cherry-fg-default);
+  font-weight: var(--cherry-text-label-md-weight);
+}
+
+.description {
+  color: var(--cherry-fg-muted);
+}

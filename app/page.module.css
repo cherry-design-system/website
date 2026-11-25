@@ -1,0 +1,10 @@
+.page {
+  position: relative;
+  isolation: isolate;
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+  outline: none;
+}

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "skills": {
+    "cherry-react": {
+      "source": "cherry-design-system/react",
+      "commit": "ca578b696b150cf3cbf98f1d4d6310b3aa028ec0",
+      "sourceType": "github",
+      "skillPath": "skills/cherry-react/SKILL.md",
+      "computedHash": "2e67c08f3028e8ed5062b868fe8299631c8795a22470ce39ada2b1ef1109486f"
+    }
+  }
+}

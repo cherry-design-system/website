@@ -1,0 +1,44 @@
+.header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: var(--cherry-space-6);
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: var(--cherry-space-5) var(--cherry-space-16);
+  box-sizing: border-box;
+}
+
+.links {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  min-width: 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--cherry-space-3);
+}
+
+@media (max-width: 991.98px) {
+  .header {
+    padding-inline: var(--cherry-space-5);
+  }
+  /* The pill doesn't fit beside the actions; the hero links cover the same
+     destinations on small screens. */
+  .links {
+    display: none;
+  }
+  .actions {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 419.98px) {
+  .cta {
+    display: none;
+  }
+}

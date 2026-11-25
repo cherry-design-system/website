@@ -1,0 +1,52 @@
+.lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 9.6px;
+  color: var(--cherry-fg-default);
+  text-decoration: none;
+  border-radius: var(--cherry-radius-md);
+}
+
+.lockup:focus-visible {
+  outline: 2px solid transparent;
+  box-shadow: var(--cherry-ring);
+}
+
+/* The glyph SVG carries its own padding; the logo box crops it to the mark. */
+.logo {
+  position: relative;
+  flex-shrink: 0;
+  width: 40.8px;
+  height: 25.6px;
+}
+
+.glyph {
+  position: absolute;
+  left: -13.87px;
+  top: -21.33px;
+  width: 68.267px;
+  height: 68.267px;
+  max-width: none;
+}
+
+.word {
+  font-family: var(--cherry-font-sans);
+  font-size: 27.2px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1.36px;
+  white-space: nowrap;
+}
+
+.rLight,
+.rDeep {
+  letter-spacing: -0.8px;
+}
+
+.rLight {
+  color: var(--cherry-cherry-400);
+}
+
+.rDeep {
+  color: var(--cherry-cherry-600);
+}

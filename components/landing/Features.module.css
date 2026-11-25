@@ -1,0 +1,29 @@
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--cherry-space-6);
+  box-sizing: border-box;
+  max-width: 1440px;
+  margin: var(--cherry-space-24) auto 0;
+  padding: 0 var(--cherry-space-16) var(--cherry-space-24);
+}
+
+/* Figma Box: 16px radius, 24px padding. */
+.box {
+  gap: var(--cherry-space-2);
+  padding: var(--cherry-space-6);
+  border-radius: var(--cherry-radius-xl);
+}
+
+.box > :first-child {
+  margin-bottom: var(--cherry-space-1);
+}
+
+@media (max-width: 991.98px) {
+  .features {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 560px;
+    margin-top: var(--cherry-space-16);
+    padding: 0 var(--cherry-space-5) var(--cherry-space-16);
+  }
+}

@@ -1,0 +1,61 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--cherry-space-6);
+  padding: 112px var(--cherry-space-5) 56px;
+  text-align: center;
+}
+
+/* Figma: the dot is cherry red while the label stays full contrast. */
+.badge {
+  background: var(--cherry-bg-canvas);
+  color: var(--cherry-fg-default);
+}
+.badge > :first-child {
+  color: var(--cherry-accent-default);
+}
+
+.title {
+  max-width: 18ch;
+  color: var(--cherry-fg-default);
+  font-size: clamp(2.5rem, 1.6rem + 4vw, 4.5rem);
+  font-weight: var(--cherry-text-display-weight);
+  line-height: 1.0556;
+  letter-spacing: var(--cherry-text-display-tracking);
+  text-wrap: balance;
+}
+
+.lead {
+  max-width: 620px;
+  color: var(--cherry-fg-muted);
+  font-size: var(--cherry-text-body-lg-size);
+  line-height: var(--cherry-text-body-lg-line-height);
+  letter-spacing: var(--cherry-text-body-lg-tracking);
+  text-wrap: pretty;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--cherry-space-3);
+  padding-top: var(--cherry-space-2);
+}
+
+.ctas > * {
+  border-radius: var(--cherry-radius-lg);
+}
+
+.install {
+  max-width: 100%;
+}
+
+@media (max-width: 575.98px) {
+  .hero {
+    padding-top: var(--cherry-space-16);
+  }
+  .title br {
+    display: none;
+  }
+}
