@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef, useState } from "react";
 import {
   Accordion,
   AccordionItem,
@@ -28,10 +27,9 @@ import { faqs } from "@/lib/content";
 import { track } from "@/lib/analytics";
 import { site } from "@/lib/site";
 import styles from "./ProductShot.module.css";
+import { useDemoChat, type DemoMessage } from "./useDemoChat";
 
-type Message = { id: number; role: "user" | "assistant"; text: string };
-
-const INITIAL: Message[] = [
+const INITIAL: DemoMessage[] = [
   {
     id: 1,
     role: "assistant",
@@ -44,9 +42,6 @@ const INITIAL: Message[] = [
     text: "Add a class. cherry's styles sit in their own cascade layer, so yours win without !important. Tailwind classes work too.",
   },
 ];
-
-const DEMO_REPLY =
-  "This assistant is a demo, but the panel, messages, sources and composer are the real cherry chat kit. Wire onSend to your model and it streams the same way.";
 
 function AssistantAvatar() {
   return (
@@ -82,25 +77,22 @@ function MessageActions({ text }: { text: string }) {
 
 export function ProductShot() {
   const toast = useToast();
-  const [messages, setMessages] = useState<Message[]>(INITIAL);
-  const [pending, setPending] = useState(false);
-  const nextId = useRef(INITIAL.length + 1);
+  const chat = useDemoChat(INITIAL);
+  const { messages, phase, streamingId } = chat;
+  const busy = phase !== "idle";
+  const untouched = messages === INITIAL;
 
   function send(text: string) {
     track("demo_chat_sent");
-    setMessages((m) => [...m, { id: nextId.current++, role: "user", text }]);
-    setPending(true);
-    window.setTimeout(() => {
-      setMessages((m) => [
-        ...m,
-        { id: nextId.current++, role: "assistant", text: DEMO_REPLY },
-      ]);
-      setPending(false);
-    }, 1200);
+    chat.send(text);
   }
 
   return (
-    <section className={styles.shot} aria-labelledby="preview-title">
+    <section
+      id="ai-kit"
+      className={styles.shot}
+      aria-labelledby="preview-title"
+    >
       <h2 id="preview-title" className="visually-hidden">
         Live preview of cherry components
       </h2>
@@ -168,14 +160,11 @@ export function ProductShot() {
               variant="ghost"
               aria-label="Reset conversation"
               icon={<RotateCcw />}
-              onClick={() => {
-                setMessages(INITIAL);
-                setPending(false);
-              }}
+              onClick={chat.reset}
             />
           }
         >
-          <ChatMessageList streaming={pending}>
+          <ChatMessageList streaming={phase === "streaming"}>
             {messages.map((m, i) =>
               m.role === "user" ? (
                 <ChatMessage key={m.id} role="user" still={i < INITIAL.length}>
@@ -186,27 +175,34 @@ export function ProductShot() {
                   key={m.id}
                   role="assistant"
                   still={i < INITIAL.length}
+                  streaming={m.id === streamingId}
                   avatar={<AssistantAvatar />}
-                  actions={<MessageActions text={m.text} />}
+                  actions={
+                    m.id === streamingId ? undefined : (
+                      <MessageActions text={m.text} />
+                    )
+                  }
                 >
                   {m.text}
                 </ChatMessage>
               ),
             )}
-            {messages.length === INITIAL.length ? (
+            {untouched ? (
               <ChatSources className={styles.sources}>
                 <ChatSource href={site.links.docs}>Styling</ChatSource>
                 <ChatSource href={site.links.docs}>Tailwind</ChatSource>
               </ChatSources>
             ) : null}
-            <ChatTyping active={pending || messages.length === INITIAL.length} />
+            {/* The Figma shows the kit's typing state; afterwards it marks the
+                pause before a reply starts streaming. */}
+            <ChatTyping active={untouched || phase === "thinking"} />
           </ChatMessageList>
           <ChatInput
+            glow
             placeholder="Ask anything about cherry…"
             aria-label="Message the cherry assistant"
-            loading={pending}
+            loading={busy}
             onSend={send}
-            footnote="AI can make mistakes. Check important info."
             actions={
               <>
                 <IconButton
