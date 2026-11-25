@@ -12,7 +12,7 @@ export const features = [
       "Colors, radius, type and shadows are tokens. Set your brand once and light and dark follow.",
   },
   {
-    id: "ai-kit",
+    id: "chat-kit",
     title: "AI chat kit",
     description:
       "Messages, sources, a glowing composer and a drawer panel, ready to wire to your model.",

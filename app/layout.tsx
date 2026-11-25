@@ -6,6 +6,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { themeInitScript } from "@cherry-design-system/react/theme-init";
 import { ToastProvider, Toaster } from "@cherry-design-system/react";
 import { JsonLd } from "@/components/JsonLd";
+import { SiteNav } from "@/components/SiteNav";
 import { organizationSchema, websiteSchema } from "@/lib/seo/schemas";
 import { site } from "@/lib/site";
 
@@ -81,6 +82,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <a className="skip-link" href="#main">
           Skip to content
         </a>
+        <SiteNav />
         <ToastProvider>
           {children}
           <Toaster position="bottom" align="right" />

@@ -10,7 +10,7 @@ import styles from "./Features.module.css";
 
 const icons = {
   theming: <Palette />,
-  "ai-kit": <Sparkles />,
+  "chat-kit": <Sparkles />,
   "plain-css": <Zap />,
 } as const;
 

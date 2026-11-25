@@ -9,6 +9,8 @@
     sans-serif;
   --cherry-font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular,
     Menlo, monospace;
+  /* The fixed NavPill sits on the header row (20px from the top, as in Figma). */
+  --cherry-nav-pill-offset: var(--cherry-space-5);
 }
 
 html {
@@ -36,10 +38,6 @@ h2,
 h3,
 p {
   margin: 0;
-}
-
-[id] {
-  scroll-margin-top: var(--cherry-space-24);
 }
 
 .skip-link {
