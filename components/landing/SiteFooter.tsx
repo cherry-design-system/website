@@ -8,9 +8,9 @@ const groups = [
   {
     title: "Product",
     links: [
-      { label: "Components", href: "#components" },
-      { label: "Theming", href: "#theming" },
-      { label: "AI chat kit", href: "#ai-kit" },
+      { label: "Components", href: `${site.links.docs}/components` },
+      { label: "Theming", href: `${site.links.docs}/brands` },
+      { label: "AI chat kit", href: `${site.links.docs}/components/chat` },
       { label: "Figma kit", href: site.links.figma },
     ],
   },
@@ -18,9 +18,9 @@ const groups = [
     title: "Resources",
     links: [
       { label: "Documentation", href: site.links.docs },
-      { label: "Changelog", href: site.links.releases },
+      { label: "Changelog", href: `${site.links.docs}/changelog` },
       { label: "GitHub issues", href: site.links.githubIssues },
-      { label: "Migrating to 2.0", href: site.links.docs },
+      { label: "Migrating to 2.0", href: `${site.links.docs}/migration` },
     ],
   },
 ];
