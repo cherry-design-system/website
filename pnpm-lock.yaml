@@ -167,8 +167,8 @@ importers:
   .:
     dependencies:
       '@cherry-design-system/react':
-        specifier: ^2.0.1
-        version: 2.0.1(lucide-react@1.78.0(@types/react@19.3.0)(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        specifier: ^2.1.0
+        version: 2.1.0(lucide-react@1.78.0(@types/react@19.3.0)(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       lucide-react:
         specifier: ^1.78.0
         version: 1.78.0(@types/react@19.3.0)(react@19.3.0)
@@ -273,8 +273,8 @@ packages:
     resolution: {integrity: sha512-/XKpKDakL//LZ66bq1XsZOswuqeI5MZqPLDu18o3XdkU1fNJ7bdPtzgnc4ZNS+bBGHV0FJG8jjb8SwcC3nNVQQ==}
     engines: {node: '>=6.9.0'}
 
-  '@cherry-design-system/react@2.0.1':
-    resolution: {integrity: sha512-6vXfjGnUq5QqEDk/RwRD6zhReJeoWASedLePK/TVpBy0E2F1XZJp+1wUuvOciLSh9tPh2w8YMRLz1Uvtt6QWDw==}
+  '@cherry-design-system/react@2.1.0':
+    resolution: {integrity: sha512-3C0FXjLaKvXjHIaSLYcS29FM5iQfZ2iBaNHlp1cy1J3L6Ni8WkCE0XB4fnUz74wWqFdTe77bmy0N3boUsw/e/Q==}
     engines: {node: '>=20'}
     peerDependencies:
       lucide-react: '>=1.0.0'
@@ -2125,7 +2125,7 @@ snapshots:
       '@babel/helper-string-parser': 7.29.15
       '@babel/helper-validator-identifier': 7.29.7
 
-  '@cherry-design-system/react@2.0.1(lucide-react@1.78.0(@types/react@19.3.0)(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
+  '@cherry-design-system/react@2.1.0(lucide-react@1.78.0(@types/react@19.3.0)(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
     dependencies:
       lucide-react: 1.78.0(@types/react@19.3.0)(react@19.3.0)
       react: 19.3.0
